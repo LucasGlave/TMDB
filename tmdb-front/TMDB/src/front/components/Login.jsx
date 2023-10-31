@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./registro.scss";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,19 +25,20 @@ const Login = () => {
       return;
     }
     axios
-      .post(`http://localhost:5000/api/user/login`, formData)
-      .then((response) => {
-        setUserId(response.data.id);
+      .post(`http://localhost:5000/api/user/login`, formData, {
+        withCredentials: true,
+      })
+      .then(() => {
+        const cookies = document.cookie;
+        console.log("cookies", cookies);
         setFormData({
           email: "",
           contraseña: "",
         });
-        alert("Logueado");
+        navigate("/inicio");
       })
       .catch((error) => {
-        setError(
-          "Error al loguear. Verifica tus datos e inténtalo nuevamente."
-        );
+        console.error(error);
       });
   };
   return (
@@ -67,6 +70,11 @@ const Login = () => {
             <span>Iniciar sesión</span>
             <span></span>
           </button>
+          <p style={{ textAlign: "center" }}> Desea Registrarse?</p>
+          <Link className="animated-button" to={"/user/registro"}>
+            <span style={{ color: "#FFFFFF" }}>Registro</span>
+            <span></span>
+          </Link>
         </form>
       </div>
     </div>

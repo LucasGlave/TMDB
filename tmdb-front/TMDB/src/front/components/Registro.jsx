@@ -55,7 +55,7 @@ const Registro = () => {
           contraseña: "",
           repContraseña: "",
         });
-        navigate("user/login");
+        navigate("/user/login");
       })
       .catch((error) => {
         setError(
@@ -91,7 +91,7 @@ const Registro = () => {
           <div className="form-group">
             <input
               value={formData.email}
-              type="text"
+              type="email"
               name="email"
               placeholder="Email"
               onChange={handleInputChange}
@@ -120,12 +120,11 @@ const Registro = () => {
             <span>Registrar</span>
             <span></span>
           </button>
-          {/* <button type="submit" className="animated-button"> */}
+          <p style={{ textAlign: "center" }}>Ya tienes una cuenta?</p>
           <Link className="animated-button" to={"/user/login"}>
             <span style={{ color: "#FFFFFF" }}>Iniciar Sesión</span>
             <span></span>
           </Link>
-          {/* </button> */}
         </form>
       </div>
     </div>
