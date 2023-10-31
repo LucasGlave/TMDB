@@ -1,10 +1,20 @@
 import React from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const clickBoton = () => {
-    axios.post("http://localhost:5000/api/user/logout");
+    axios.post(
+      "http://localhost:5000/api/user/logout",
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+    navigate("/user/login");
   };
   return (
     <div
@@ -30,11 +40,7 @@ const Navbar = () => {
         name="text"
         type="text"
       ></input>
-      <Link
-        to={"/user/login"}
-        onClick={clickBoton}
-        className="cssbuttons-io-button"
-      >
+      <button onClick={clickBoton} className="cssbuttons-io-button">
         Cerrar sesión
         <div className="icon">
           <svg
@@ -50,7 +56,7 @@ const Navbar = () => {
             ></path>
           </svg>
         </div>
-      </Link>
+      </button>
     </div>
   );
 };

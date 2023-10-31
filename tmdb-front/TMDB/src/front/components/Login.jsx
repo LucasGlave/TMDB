@@ -35,7 +35,7 @@ const Login = () => {
           email: "",
           contraseña: "",
         });
-        navigate("/inicio");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
