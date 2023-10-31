@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./registro.scss";
 import Login from "./Login";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Registro = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: "",
     apellido: "",
@@ -54,8 +55,7 @@ const Registro = () => {
           contraseña: "",
           repContraseña: "",
         });
-        alert("Registro exitoso");
-        <Login />;
+        navigate("user/login");
       })
       .catch((error) => {
         setError(
