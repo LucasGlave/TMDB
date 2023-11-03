@@ -8,7 +8,7 @@ const Navbar = () => {
   const search = useInput();
   const navigate = useNavigate();
 
-  const clickBoton = () => {
+  const botonCerrar = () => {
     axios.post(
       "http://localhost:5000/api/user/logout",
       {},
@@ -18,7 +18,9 @@ const Navbar = () => {
     );
     navigate("/user/login");
   };
-
+  const botonFavoritos = () => {
+    navigate("/favoritos");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/busqueda/${search.value}`);
@@ -38,7 +40,7 @@ const Navbar = () => {
       <Link to={"/"}>
         <div style={{ paddingRight: "9.5rem" }}>
           <img
-            src="../../../4.png"
+            src="../../../7.png"
             alt="logo"
             width={"100px"}
             height={"100px"}
@@ -54,24 +56,49 @@ const Navbar = () => {
           type="text"
         ></input>
       </form>
-
-      <button onClick={clickBoton} className="cssbuttons-io-button">
-        Cerrar sesión
-        <div className="icon">
-          <svg
-            height="24"
-            width="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-              fill="currentColor"
-            ></path>
-          </svg>
-        </div>
-      </button>
+      <div
+        style={{
+          gap: "1rem",
+          display: "flex",
+          flexDirection: "column",
+          marginTop: "2rem",
+        }}
+      >
+        <button onClick={botonCerrar} className="cssbuttons-io-button">
+          Cerrar sesión
+          <div className="icon">
+            <svg
+              height="24"
+              width="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+        </button>
+        <button onClick={botonFavoritos} className="cssbuttons-io-button">
+          Favoritos
+          <div className="icon">
+            <svg
+              height="24"
+              width="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };

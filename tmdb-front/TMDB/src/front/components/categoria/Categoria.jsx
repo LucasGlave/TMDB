@@ -47,7 +47,7 @@ const Categoria = ({ peliculas, categoria }) => {
           <SwiperSlide
             key={`${categoria.name} - ${pelicula.id}`}
             className="card"
-            onClick={() => handleModal(pelicula)}
+            onClick={() => handleModal(pelicula)} // descubrir por que renderiza mal la imagen aca y en busqueda no
           >
             <img
               src={`https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}

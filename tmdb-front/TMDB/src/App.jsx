@@ -5,7 +5,7 @@ import Login from "./front/components/login/Login";
 import Inicio from "./front/components/inicio/Inicio";
 import Busqueda from "./front/components/busqueda/Busqueda";
 import { ModalProvider } from "./front/commons/modal/ModalContext";
-import Modal from "./front/commons/modal/Modal";
+import Favoritos from "./front/components/favoritos/Favoritos";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/user/registro" element={<Registro />} />
           <Route path="/user/login" element={<Login />} />
+          <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/busqueda/:busqueda" element={<Busqueda />} />
         </Routes>
       </ModalProvider>
