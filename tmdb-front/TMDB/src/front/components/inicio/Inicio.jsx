@@ -4,19 +4,11 @@ import axios from "axios";
 import Navbar from "../navbar/Navbar";
 import Registro from "../registro/Registro";
 import Categorias from "../categoria/Categorias";
-import { useNavigate } from "react-router";
+import { useUser } from "./userContext";
 
 const Inicio = () => {
-  const [user, setUser] = useState({});
-  const navigate = useNavigate();
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/user/me", { withCredentials: true })
-      .then((res) => res.data)
-      .then((usuario) => {
-        if (usuario) setUser(usuario);
-      });
-  }, []);
+  const user = useUser();
+
   return (
     <div>
       {user.email ? (

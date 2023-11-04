@@ -1,9 +1,22 @@
 import React from "react";
 import { useModal } from "./ModalContext";
 import "./modal.scss";
+import { useUser } from "../../components/inicio/userContext";
+import axios from "axios";
 
 function Modal() {
+  const user = useUser();
+  const emailUser = user.email;
   const { modalAbierto, modalContent, closeModal } = useModal();
+  const clickFav = (pelicula) => {
+    if (user && user.email) {
+      axios
+        .post(`http://localhost:5000/api/favoritos/favoritos/${emailUser}`, {
+          pelicula: pelicula, //por ahora email, ya lo voy a hacer con id
+        })
+        .then(() => console.log("subida"));
+    }
+  };
   return modalAbierto ? (
     <div className="modal" onClick={closeModal}>
       <div className="modal-content">
@@ -18,7 +31,7 @@ function Modal() {
               <p>{modalContent.description}</p>
             ) : null}
             <button
-              onClick={() => console.log("funciona")}
+              onClick={() => clickFav(modalContent)}
               style={{ zIndex: "1" }}
               className="botonCard"
             >
