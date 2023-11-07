@@ -9,10 +9,11 @@ function Modal() {
   const user = useUser();
   const { modalAbierto, modalContent, closeModal } = useModal();
   const clickFav = (pelicula) => {
+    console.log(pelicula);
     if (user && user.id) {
       axios
         .post(`http://localhost:5000/api/favoritos/${user.id}`, {
-          pelicula: pelicula,
+          movieId: pelicula.movieId,
         })
         .then(() => console.log("subida"));
     }

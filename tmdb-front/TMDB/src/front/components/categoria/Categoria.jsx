@@ -17,6 +17,7 @@ const Categoria = ({ peliculas, categoria }) => {
       title: pelicula.title,
       image: `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`,
       description: pelicula.overview,
+      movieId: pelicula.id,
     });
   };
   return (
