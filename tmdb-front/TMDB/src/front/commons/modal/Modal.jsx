@@ -3,16 +3,16 @@ import { useModal } from "./ModalContext";
 import "./modal.scss";
 import { useUser } from "../../components/inicio/userContext";
 import axios from "axios";
+import { useParams } from "react-router";
 
 function Modal() {
   const user = useUser();
-  const emailUser = user.email;
   const { modalAbierto, modalContent, closeModal } = useModal();
   const clickFav = (pelicula) => {
-    if (user && user.email) {
+    if (user && user.id) {
       axios
-        .post(`http://localhost:5000/api/favoritos/favoritos/${emailUser}`, {
-          pelicula: pelicula, //por ahora email, ya lo voy a hacer con id
+        .post(`http://localhost:5000/api/favoritos/${user.id}`, {
+          pelicula: pelicula,
         })
         .then(() => console.log("subida"));
     }

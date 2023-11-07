@@ -26,6 +26,7 @@ const Categorias = () => {
         .get("https://api.themoviedb.org/3/discover/movie", {
           params: {
             api_key: "a8b1c395b2742185f0c669c78c9a3bc2",
+            language: "es-419",
             with_genres: categoria.id,
           },
         })

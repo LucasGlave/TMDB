@@ -15,7 +15,7 @@ const Categoria = ({ peliculas, categoria }) => {
   const handleModal = (pelicula) => {
     openModal({
       title: pelicula.title,
-      image: `https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`,
+      image: `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`,
       description: pelicula.overview,
     });
   };
@@ -50,7 +50,7 @@ const Categoria = ({ peliculas, categoria }) => {
             onClick={() => handleModal(pelicula)} // descubrir por que renderiza mal la imagen aca y en busqueda no
           >
             <img
-              src={`https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
               alt={pelicula.title}
             />
           </SwiperSlide>

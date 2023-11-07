@@ -17,7 +17,7 @@ function App() {
             <Route path="/" element={<Inicio />} />
             <Route path="/user/registro" element={<Registro />} />
             <Route path="/user/login" element={<Login />} />
-            <Route path="/favoritos/:email" element={<Favoritos />} />
+            <Route path="/favoritos/:id" element={<Favoritos />} />
             <Route path="/busqueda/:busqueda" element={<Busqueda />} />
           </Routes>
         </ModalProvider>

@@ -3,8 +3,10 @@ import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useInput from "../../hooks/useInput";
+import { useUser } from "../inicio/userContext";
 
 const Navbar = () => {
+  const user = useUser();
   const search = useInput();
   const navigate = useNavigate();
 
@@ -19,7 +21,7 @@ const Navbar = () => {
     navigate("/user/login");
   };
   const botonFavoritos = () => {
-    navigate("/favoritos");
+    navigate(`/favoritos/${user.id}`);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
